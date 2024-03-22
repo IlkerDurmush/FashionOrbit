@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+FashionOrbit is a E-commerce web app created using Next.Js, NextAuth, Zustand, Mongoose, MongoDB, TailWindCSS, DaisyUI, BcryptJS.
 
 ## Getting Started
 
