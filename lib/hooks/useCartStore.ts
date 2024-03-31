@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { round2 } from "../utils";
 import { OrderItem, ShippingAddress } from "../models/OrderModel";
 import { persist } from "zustand/middleware";
-import { init } from "next/dist/compiled/webpack/webpack";
 
 type Cart = {
   items: OrderItem[];
@@ -39,14 +38,23 @@ export const cartStore = create<Cart>()(
 );
 
 export default function useCartService() {
-  const { items, itemsPrice, taxPrice, shippingPrice, totalPrice } =
-    cartStore();
+  const {
+    items,
+    itemsPrice,
+    taxPrice,
+    shippingPrice,
+    totalPrice,
+    paymentMethod,
+    shippingAddress,
+  } = cartStore();
   return {
     items,
     itemsPrice,
     taxPrice,
     shippingPrice,
     totalPrice,
+    paymentMethod,
+    shippingAddress,
     increase: (item: OrderItem) => {
       const exist = items.find((x) => x.slug === item.slug);
       const updatedCartItems = exist
@@ -89,9 +97,14 @@ export default function useCartService() {
         shippingAddress,
       });
     },
-    savePaymentAddress: (paymentMethod: string) => {
+    savePaymentMethod: (paymentMethod: string) => {
       cartStore.setState({
         paymentMethod,
+      });
+    },
+    clear: () => {
+      cartStore.setState({
+        items: [],
       });
     },
   };
