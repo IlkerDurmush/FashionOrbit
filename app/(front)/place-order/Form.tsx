@@ -60,7 +60,7 @@ const Form = () => {
     if (items.length === 0) {
       return router.push("/");
     }
-  }, [paymentMethod, router]);
+  }, [paymentMethod, router, items.length]);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {

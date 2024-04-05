@@ -69,4 +69,4 @@ export const POST = auth(async (req: any) => {
   } catch (err: any) {
     return Response.json({ message: err.message }, { status: 500 });
   }
-});
+}) as any;
