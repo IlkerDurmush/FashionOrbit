@@ -21,15 +21,16 @@ export default async function Home() {
         {featuredProducts.map((product, index) => (
           <div
             key={product._id}
-            id={`slide-${product.slug}`}
+            id={`slide-${index}`}
             className="carousel-item relative w-full"
           >
             <Link href={`/product/${product.slug}`}>
               <img src={product.banner} className="w-full" alt={product.name} />
             </Link>
+
             <div
-              className="absolute flex justify-between transform
-            -translate-y-1/2 left-5 right-5 top-1/2"
+              className="absolute flex justify-between transform 
+               -translate-y-1/2 left-5 right-5 top-1/2"
             >
               <a
                 href={`#slide-${
@@ -37,7 +38,7 @@ export default async function Home() {
                 }`}
                 className="btn btn-circle"
               >
-                ←
+                ❮
               </a>
               <a
                 href={`#slide-${
@@ -45,7 +46,7 @@ export default async function Home() {
                 }`}
                 className="btn btn-circle"
               >
-                →
+                ❯
               </a>
             </div>
           </div>

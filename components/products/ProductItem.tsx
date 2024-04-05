@@ -6,14 +6,14 @@ import Image from "next/image";
 const ProductItem = ({ product }: { product: Product }) => {
   return (
     <div className="card bg-base-300 shadow-xl mb-4">
-      <figure>
+      <figure className="mt-3">
         <Link href={`/product/${product.slug}`}>
           <Image
             src={product.image}
             alt={product.name}
             width={300}
             height={300}
-            className="object-cover h-64 w-full"
+            className="object-cover h-64 w-full rounded-lg hover:opacity-80"
           ></Image>
         </Link>
       </figure>

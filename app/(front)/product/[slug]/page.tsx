@@ -1,6 +1,7 @@
 import data from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
+import Mike from "../../../../public/images/Mike.png";
 import AddToCart from "@/components/products/AddToCart";
 import productService from "@/lib/services/productService";
 import { convertDocToObj } from "@/lib/utils";
@@ -27,12 +28,17 @@ export default async function ProductDetails({
 }) {
   const product = await productService.getBySlug(params.slug);
   if (!product) {
-    return <div>product not found</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Image src={Mike} alt="Mike" className="size-36" />
+        <p> Whoops that item doesnt exist</p>
+      </div>
+    );
   }
   return (
     <>
-      <div className="my-2">
-        <Link href="/">back to products</Link>
+      <div className="my-2 btn w-fit p-1 rounded">
+        <Link href="/">Back To Products</Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">

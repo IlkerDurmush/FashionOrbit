@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Menu = () => {
-  const { items } = useCartService();
+  const { items, init } = useCartService();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -13,6 +13,7 @@ const Menu = () => {
 
   const signoutHandler = () => {
     signOut({ callbackUrl: "/signin" });
+    init();
   };
 
   const { data: session } = useSession();
@@ -35,6 +36,7 @@ const Menu = () => {
             <li>
               <div className="dropdown dropdown-bottom dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost rounded-btn">
+                  {session.user.name}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -54,6 +56,12 @@ const Menu = () => {
                   tabIndex={0}
                   className="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52"
                 >
+                  <li>
+                    <Link href="/profile">My Profile</Link>
+                  </li>
+                  <li>
+                    <Link href="/order-history">Order History</Link>
+                  </li>
                   <li>
                     <button onClick={signoutHandler} type="button">
                       Sign Out
