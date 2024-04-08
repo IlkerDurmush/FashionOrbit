@@ -66,6 +66,7 @@ const Menu = () => {
             )}
           </Link>
         </li>
+
         {session && session.user ? (
           <>
             <li>
@@ -91,6 +92,11 @@ const Menu = () => {
                   tabIndex={0}
                   className="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52"
                 >
+                  {session.user.isAdmin && (
+                    <li onClick={handleClick}>
+                      <Link href="/admin/dashboard">Admin Dashboard</Link>
+                    </li>
+                  )}
                   <li onClick={handleClick}>
                     <Link href="/profile">My Profile</Link>
                   </li>
