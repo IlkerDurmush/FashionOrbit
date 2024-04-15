@@ -71,4 +71,4 @@ export const GET = auth(async (...request: any) => {
     productsData,
     usersData,
   });
-});
+}) as any;

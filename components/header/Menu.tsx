@@ -27,6 +27,7 @@ const Menu = () => {
   return (
     <div>
       <ul className="flex items-stretch">
+        {/*SVG Луна § Слънце*/}
         <li>
           {mounted && (
             <label className="swap swap-rotate">
@@ -58,7 +59,7 @@ const Menu = () => {
         </li>
         <li>
           <Link className="btn btn-ghost rounded-btn" href="/cart">
-            Cart
+            Количка
             {mounted && items.length != 0 && (
               <div className="badge badge-secondary">
                 {items.reduce((a, c) => a + c.qty, 0)}{" "}
@@ -94,18 +95,18 @@ const Menu = () => {
                 >
                   {session.user.isAdmin && (
                     <li onClick={handleClick}>
-                      <Link href="/admin/dashboard">Admin Dashboard</Link>
+                      <Link href="/admin/dashboard">Админ</Link>
                     </li>
                   )}
                   <li onClick={handleClick}>
-                    <Link href="/profile">My Profile</Link>
+                    <Link href="/profile">Моя Профил</Link>
                   </li>
                   <li onClick={handleClick}>
-                    <Link href="/order-history">Order History</Link>
+                    <Link href="/order-history">Поръчки История</Link>
                   </li>
                   <li onClick={handleClick}>
                     <button onClick={signoutHandler} type="button">
-                      Sign Out
+                      Излизане от профил
                     </button>
                   </li>
                 </ul>
@@ -121,7 +122,7 @@ const Menu = () => {
                 signIn();
               }}
             >
-              Sign in
+              Влизане в профил
             </button>
           </li>
         )}

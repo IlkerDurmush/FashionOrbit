@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 export default function OrderHistory() {
   return (
     <>
-      <h2 className="text-2xl py-2">Order History</h2>
+      <h2 className="text-2xl py-2">Поръчки История</h2>
       <MyOrders />
     </>
   );

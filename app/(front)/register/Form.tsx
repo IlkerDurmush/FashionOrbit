@@ -72,17 +72,17 @@ const Form = () => {
   return (
     <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">Register</h1>
+        <h1 className="card-title">Създаване на профил</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="name">
-              Name
+              Име
             </label>
             <input
               type="text"
               id="name"
               {...register("name", {
-                required: "Name is required",
+                required: "Името е задължително",
               })}
               className="input input-bordered w-full max-w-sm"
             />
@@ -92,16 +92,16 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="email">
-              Email
+              Имейл
             </label>
             <input
               type="text"
               id="email"
               {...register("email", {
-                required: "Email is required",
+                required: "Имейл е задължителен",
                 pattern: {
                   value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                  message: "Email is invalid",
+                  message: "Емийл е невалиден",
                 },
               })}
               className="input input-bordered w-full max-w-sm"
@@ -112,13 +112,13 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="password">
-              Password
+              Парола
             </label>
             <input
               type="password"
               id="password"
               {...register("password", {
-                required: "Password is required",
+                required: "Паролата е задължителна",
               })}
               className="input input-bordered w-full max-w-sm"
             />
@@ -128,16 +128,16 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="confirmPassword">
-              Confirm Password
+              Потвърждаване на парола
             </label>
             <input
               type="password"
               id="confirmPassword"
               {...register("confirmPassword", {
-                required: "Confirm Password is required",
+                required: "Потвърждаването на паролата е задължителна",
                 validate: (value) => {
                   const { password } = getValues();
-                  return password === value || "Passwords should match!";
+                  return password === value || "Паролата трябва да съвпада!";
                 },
               })}
               className="input input-bordered w-full max-w-sm"
@@ -155,16 +155,16 @@ const Form = () => {
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>
               )}
-              Register
+              Създаване
             </button>
           </div>
         </form>
 
         <div className="divider"> </div>
         <div>
-          Already have an account?{" "}
+          Вече имате профил?{" "}
           <Link className="link" href={`/signin?callbackUrl=${callbackUrl}`}>
-            Login
+            Влизане в профил
           </Link>
         </div>
       </div>

@@ -77,11 +77,11 @@ const Form = () => {
   return (
     <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">Profile</h1>
+        <h1 className="card-title">Профил</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="name">
-              Name
+              Име
             </label>
             <input
               type="text"
@@ -97,7 +97,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="email">
-              Email
+              Имейл
             </label>
             <input
               type="text"
@@ -117,7 +117,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="password">
-              New Password
+              Нова Парола
             </label>
             <input
               type="password"
@@ -131,7 +131,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="confirmPassword">
-              Confirm New Password
+              Потвърждаване на нова парола
             </label>
             <input
               type="password"
@@ -149,7 +149,7 @@ const Form = () => {
             )}
           </div>
 
-          <div className="my-2">
+          <div className="my-6">
             <button
               type="submit"
               disabled={isSubmitting}
@@ -158,7 +158,7 @@ const Form = () => {
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>
               )}
-              Update
+              Обновяване
             </button>
           </div>
         </form>

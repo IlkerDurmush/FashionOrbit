@@ -25,7 +25,7 @@ const Header = () => {
               </svg>
             </label>
             <Link href="/" className="btn btn-ghost text-lg">
-              Fashion Orbit
+              Fashion Orbits
             </Link>
           </div>
           <Menu />

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import useSWR from "swr";
+import useSWRMutation from "swr/mutation";
 
 export default function OrderDetails({
   orderId,
@@ -14,7 +15,24 @@ export default function OrderDetails({
   orderId: string;
   paypalClientId: string;
 }) {
+  const { trigger: deliverOrder, isMutating: isDelivering } = useSWRMutation(
+    `/api/orders/${orderId}`,
+    async (url) => {
+      const res = await fetch(`/api/admin/orders/${orderId}/deliver`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      res.ok
+        ? toast.success("Order delivered successfully")
+        : toast.error(data.message);
+    }
+  );
+
   const { data: session } = useSession();
+  console.log(session);
 
   function createPayPalOrder() {
     return fetch(`/api/orders/${orderId}/create-paypal-order`, {
@@ -62,46 +80,46 @@ export default function OrderDetails({
 
   return (
     <div>
-      <h1 className="text-2xl py-4">Order {orderId}</h1>
+      <h1 className="text-2xl py-4">Поръчка {orderId}</h1>
       <div className="grid md:grid-cols-4 md:gap-5 my-4">
         <div className="md:col-span-3">
           <div className="card bg-base-300">
             <div className="card-body">
-              <h2 className="card-title">Shipping Address</h2>
+              <h2 className="card-title">Адрес</h2>
               <p>{shippingAddress.fullName}</p>
               <p>
                 {shippingAddress.address}, {shippingAddress.city},{" "}
                 {shippingAddress.postalCode}, {shippingAddress.country}{" "}
               </p>
               {isDelivered ? (
-                <div className="text-success">Delivered at {deliveredAt}</div>
+                <div className="text-success">Доставено на {deliveredAt}</div>
               ) : (
-                <div className="text-error">Not Delivered</div>
+                <div className="text-error">Недоставено</div>
               )}
             </div>
           </div>
 
           <div className="card bg-base-300 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Payment Method</h2>
+              <h2 className="card-title">Метод за плащане</h2>
               <p>{paymentMethod}</p>
               {isPaid ? (
-                <div className="text-success">Paid at {paidAt}</div>
+                <div className="text-success">Платено {paidAt}</div>
               ) : (
-                <div className="text-error">Not Paid</div>
+                <div className="text-error">Неплатено</div>
               )}
             </div>
           </div>
 
           <div className="card bg-base-300 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Items</h2>
+              <h2 className="card-title">Продукти</h2>
               <table className="table">
                 <thead>
                   <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Продукт</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -136,29 +154,29 @@ export default function OrderDetails({
         <div>
           <div className="card bg-base-300">
             <div className="card-body">
-              <h2 className="card-title">Order Summary</h2>
+              <h2 className="card-title">Общо</h2>
               <ul>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Items</div>
+                    <div>Продукти</div>
                     <div>${itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Tax</div>
+                    <div>Такса</div>
                     <div>${taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Shipping</div>
+                    <div>Доставка</div>
                     <div>${shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Total</div>
+                    <div>Общо</div>
                     <div>${totalPrice}</div>
                   </div>
                 </li>
@@ -173,6 +191,20 @@ export default function OrderDetails({
                         onApprove={onApprovePayPalOrder}
                       />
                     </PayPalScriptProvider>
+                  </li>
+                )}
+                {session?.user.isAdmin && (
+                  <li>
+                    <button
+                      className="btn w-full my-2"
+                      onClick={() => deliverOrder()}
+                      disabled={isDelivering}
+                    >
+                      {isDelivering && (
+                        <span className="loading loading-spinner"></span>
+                      )}
+                      Обработи като доставено
+                    </button>
                   </li>
                 )}
               </ul>

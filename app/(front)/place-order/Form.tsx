@@ -84,7 +84,7 @@ const Form = () => {
               </p>
               <div>
                 <Link className="btn" href="/shipping">
-                  Edit
+                  Обработка
                 </Link>
               </div>
             </div>
@@ -92,11 +92,11 @@ const Form = () => {
 
           <div className="card bg-base-300 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Payment Method</h2>
+              <h2 className="card-title">Метод за плащане</h2>
               <p>{paymentMethod}</p>
               <div>
                 <Link className="btn" href="/payment">
-                  Edit
+                  Обработка
                 </Link>
               </div>
             </div>
@@ -104,13 +104,13 @@ const Form = () => {
 
           <div className="card bg-base-300 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Items</h2>
+              <h2 className="card-title">Продукти</h2>
               <table className="table">
                 <thead>
                   <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Продукт</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
                   </tr>
                 </thead>
 
@@ -148,32 +148,32 @@ const Form = () => {
         <div>
           <div className="card bg-base-300">
             <div className="card-body">
-              <h2 className="card-title">Order Summary</h2>
+              <h2 className="card-title">Общо</h2>
               <ul className="space-y-3">
                 <li>
                   <div className="fles justify-between">
-                    <div>Items</div>
+                    <div>Продукти</div>
                     <div>${itemsPrice}</div>
                   </div>
                 </li>
 
                 <li>
                   <div className="fles justify-between">
-                    <div>Tax</div>
+                    <div>Такс</div>
                     <div>${taxPrice}</div>
                   </div>
                 </li>
 
                 <li>
                   <div className="fles justify-between">
-                    <div>Shipping</div>
+                    <div>Доставка</div>
                     <div>${shippingPrice}</div>
                   </div>
                 </li>
 
                 <li>
                   <div className="fles justify-between">
-                    <div>Total</div>
+                    <div>Общо</div>
                     <div>${totalPrice}</div>
                   </div>
                 </li>
@@ -189,7 +189,7 @@ const Form = () => {
                     {isPlacing && (
                       <span className="loading-spinner loading"></span>
                     )}
-                    Place Order
+                    Потвърждаване на Поръчката
                   </button>
                 </li>
               </ul>

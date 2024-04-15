@@ -28,9 +28,9 @@ const Form = () => {
       <CheckoutSteps current={2} />
       <div className="max-w-sm mx-auto card bg-base-300 my-4">
         <div className="card-body">
-          <h1 className="card-title">Payment Method</h1>
+          <h1 className="card-title">Метод за плащане</h1>
           <form onSubmit={handleSubmit}>
-            {["PayPal", "Stripe", "CashOnDelivery"].map((payment) => (
+            {["PayPal", "Stripe", "Наложен Платеж"].map((payment) => (
               <div key={payment}>
                 <label className="label cursor-pointer">
                   <span className="label-text">{payment}</span>
@@ -49,7 +49,7 @@ const Form = () => {
             ))}
             <div className="my-2">
               <button type="submit" className="btn btn-primary w-full">
-                Next
+                Напред
               </button>
             </div>
             <div className="my-2">
@@ -60,7 +60,7 @@ const Form = () => {
                   router.back();
                 }}
               >
-                Back
+                Назад
               </button>
             </div>
           </form>

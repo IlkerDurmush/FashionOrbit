@@ -19,10 +19,10 @@ export default function CartDetails() {
 
   return (
     <>
-      <h1 className="py-4 text-2xl">Shopping Cart</h1>
+      <h1 className="py-4 text-2xl">Количка</h1>
       {items.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go Shopping</Link>
+          Количката е празна. <Link href="/">Към продукти</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -30,9 +30,9 @@ export default function CartDetails() {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Item</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
+                  <th>Продукт</th>
+                  <th>Количество</th>
+                  <th>Цена</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,7 +80,7 @@ export default function CartDetails() {
               <ul>
                 <li>
                   <div className="pb-3 text-xl">
-                    Subtotal ({items.reduce((a, c) => a + c.qty, 0)}) : $
+                    Общо ({items.reduce((a, c) => a + c.qty, 0)}) : $
                     {itemsPrice}
                   </div>
                 </li>
@@ -89,7 +89,7 @@ export default function CartDetails() {
                     onClick={() => router.push("/shipping")}
                     className="btn btn-primary w-full"
                   >
-                    Proceed To Checkout
+                    Плащане
                   </button>
                 </li>
               </ul>
