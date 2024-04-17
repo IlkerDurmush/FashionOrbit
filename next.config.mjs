@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com", // if your website has no www, drop it
+        hostname: "fashion-orbit.vercel.app", // if your website has no www, drop it
       },
       {
         protocol: "http",
