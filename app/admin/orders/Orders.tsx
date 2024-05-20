@@ -10,40 +10,40 @@ export default function Orders() {
 
   return (
     <div>
-      <h1 className="py-4 text-2xl">Orders</h1>
+      <h1 className="py-4 text-2xl">Поръчки</h1>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTION</th>
+              <th>ПОТРЕБИТЕЛ</th>
+              <th>ДАТА</th>
+              <th>ОБЩО</th>
+              <th>ПЛАТИЛ</th>
+              <th>ДОСТАВЕН</th>
+              <th>ДЕЙСТВИЕ</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order: Order) => (
               <tr key={order._id}>
                 <td>..{order._id.substring(20, 24)}</td>
-                <td>{order.user?.name || "Deleted user"}</td>
+                <td>{order.user?.name || "Потребител"}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>${order.totalPrice}</td>
+                <td>{order.totalPrice}лв.</td>
                 <td>
                   {order.isPaid && order.paidAt
                     ? `${order.paidAt.substring(0, 10)}`
-                    : "not paid"}
+                    : "Неплатено"}
                 </td>
                 <td>
                   {order.isDelivered && order.deliveredAt
                     ? `${order.deliveredAt.substring(0, 10)}`
-                    : "not delivered"}
+                    : "Недоставен"}
                 </td>
                 <td>
                   <Link href={`/order/${order._id}`} passHref>
-                    Details
+                    Детайли
                   </Link>
                 </td>
               </tr>

@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import React from "react";
 import Link from "next/link";
 import Menu from "./Menu";
+import { SearchBox } from "./SearchBox";
 
 const Header = () => {
   return (
@@ -29,6 +30,9 @@ const Header = () => {
             </Link>
           </div>
           <Menu />
+          <div className="bg-base-300 block md:hidden text-center pb-3">
+            <SearchBox />
+          </div>
         </div>
       </nav>
     </header>

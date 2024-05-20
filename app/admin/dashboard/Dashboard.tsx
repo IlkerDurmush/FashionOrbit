@@ -52,7 +52,7 @@ const Dashboard = () => {
     datasets: [
       {
         fill: true,
-        label: "Sales",
+        label: "Продажби",
         data: summary.salesData.map(
           (x: { totalSales: number }) => x.totalSales
         ),
@@ -66,7 +66,7 @@ const Dashboard = () => {
     datasets: [
       {
         fill: true,
-        label: "Orders",
+        label: "Поръчки",
         data: summary.salesData.map(
           (x: { totalOrders: number }) => x.totalOrders
         ),
@@ -79,7 +79,7 @@ const Dashboard = () => {
     labels: summary.productsData.map((x: { _id: string }) => x._id), // 2022/01 2022/03
     datasets: [
       {
-        label: "Category",
+        label: "Категория",
         data: summary.productsData.map(
           (x: { totalProducts: number }) => x.totalProducts
         ),
@@ -106,7 +106,7 @@ const Dashboard = () => {
     labels: summary.usersData.map((x: { _id: string }) => x._id), // 2022/01 2022/03
     datasets: [
       {
-        label: "Users",
+        label: "Потребители",
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
         data: summary.usersData.map(
@@ -120,56 +120,56 @@ const Dashboard = () => {
     <div>
       <div className="my-4 stats inline-grid md:flex  shadow stats-vertical   md:stats-horizontal">
         <div className="stat">
-          <div className="stat-title">Sales</div>
+          <div className="stat-title">Продажби</div>
           <div className="stat-value text-primary">
-            ${formatNumber(summary.ordersPrice)}
+            {formatNumber(summary.ordersPrice)}лв.
           </div>
           <div className="stat-desc">
-            <Link href="/admin/orders">View sales</Link>
+            <Link href="/admin/orders">Виж Продажби</Link>
           </div>
         </div>
         <div className="stat">
-          <div className="stat-title"> Orders</div>
+          <div className="stat-title"> Поръчки</div>
           <div className="stat-value text-primary">{summary.ordersCount}</div>
           <div className="stat-desc">
-            <Link href="/admin/orders">View orders</Link>
+            <Link href="/admin/orders">Виж Поръчки</Link>
           </div>
         </div>
         <div className="stat">
-          <div className="stat-title">Products</div>
+          <div className="stat-title">Продукти</div>
           <div className="stat-value text-primary">{summary.productsCount}</div>
           <div className="stat-desc">
-            <Link href="/admin/products">View products</Link>
+            <Link href="/admin/products">Виж Продукти</Link>
           </div>
         </div>
         <div className="stat">
-          <div className="stat-title">Users</div>
+          <div className="stat-title">Потребители</div>
           <div className="stat-value text-primary">{summary.usersCount}</div>
           <div className="stat-desc">
-            <Link href="/admin/users">View users</Link>
+            <Link href="/admin/users">Виж Потребители</Link>
           </div>
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <h2 className="text-xl py-2">Sales Report</h2>
+          <h2 className="text-xl py-2">Данни Продажби</h2>
           <Line data={salesData} />
         </div>
         <div>
-          <h2 className="text-xl py-2">Orders Report</h2>
+          <h2 className="text-xl py-2">Данни Поръчки</h2>
           <Line data={ordersData} />
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <h2 className="text-xl py-2">Products Report</h2>
+          <h2 className="text-xl py-2">Данни Продукти</h2>
           <div className="flex items-center justify-center h-80 w-96 ">
             {" "}
             <Doughnut data={productsData} />
           </div>
         </div>
         <div>
-          <h2 className="text-xl py-2">Users Report</h2>
+          <h2 className="text-xl py-2">Данни Users</h2>
           <Bar data={usersData} />
         </div>
       </div>

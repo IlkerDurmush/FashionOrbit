@@ -34,17 +34,17 @@ export default function Users() {
 
   return (
     <div className="min-h-screen">
-      <h1 className="py-4 text-2xl">Users</h1>
+      <h1 className="py-4 text-2xl">Потребители</h1>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>
             <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>email</th>
-              <th>admin</th>
-              <th>actions</th>
+              <th>ID</th>
+              <th>ИМЕ</th>
+              <th>ИМЕЙЛ</th>
+              <th>АДМИН</th>
+              <th>ДЕЙСТВИЕ</th>
             </tr>
           </thead>
           <tbody>
@@ -61,7 +61,7 @@ export default function Users() {
                     type="button"
                     className="btn btn-ghost btn-sm"
                   >
-                    Edit
+                    Промяна
                   </Link>
                   &nbsp;
                   <button
@@ -69,7 +69,7 @@ export default function Users() {
                     type="button"
                     className="btn btn-ghost btn-sm"
                   >
-                    Delete
+                    Изтрий
                   </button>
                 </td>
               </tr>

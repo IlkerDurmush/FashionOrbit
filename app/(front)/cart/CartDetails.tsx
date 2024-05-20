@@ -69,7 +69,7 @@ export default function CartDetails() {
                         +
                       </button>
                     </td>
-                    <td>${item.price}</td>
+                    <td>{item.price}лв.</td>
                   </tr>
                 ))}
               </tbody>
@@ -80,8 +80,8 @@ export default function CartDetails() {
               <ul>
                 <li>
                   <div className="pb-3 text-xl">
-                    Общо ({items.reduce((a, c) => a + c.qty, 0)}) : $
-                    {itemsPrice}
+                    Общо ({items.reduce((a, c) => a + c.qty, 0)}) :{itemsPrice}
+                    лв.
                   </div>
                 </li>
                 <li>

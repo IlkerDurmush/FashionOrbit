@@ -5,6 +5,7 @@ import Mike from "../../../../public/images/Mike.png";
 import AddToCart from "@/components/products/AddToCart";
 import productService from "@/lib/services/productService";
 import { convertDocToObj } from "@/lib/utils";
+import { Rating } from "@/components/products/Rating";
 
 export async function generateMetadata({
   params,
@@ -61,7 +62,10 @@ export default async function ProductDetails({
               <h1 className="text-xl">{product.name}</h1>
             </li>
             <li>
-              {product.rating} от {product.numReviews} мнения
+              <Rating
+                value={product.rating}
+                caption={`${product.numReviews} ratings`}
+              />
             </li>
             <li>{product.brand}</li>
             <li>
@@ -78,7 +82,7 @@ export default async function ProductDetails({
             <div className="card-body">
               <div className="mb-2 flex justify-between">
                 <div>Цена</div>
-                <div>${product.price}</div>
+                <div>{product.price}лв.</div>
               </div>
               <div className="mb-2 flex justify-between">
                 <div>Статус</div>

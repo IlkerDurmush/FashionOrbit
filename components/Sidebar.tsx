@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       <li>
-        <h2 className="text-xl">Shop By Department</h2>
+        <h2 className="text-xl">По Категория</h2>
       </li>
       {categories.map((category: string) => (
         <li key={category}>
