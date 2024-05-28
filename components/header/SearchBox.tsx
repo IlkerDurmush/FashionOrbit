@@ -20,7 +20,7 @@ export const SearchBox = () => {
           defaultValue={category}
           className="join-item select select-bordered "
         >
-          <option value="Всяква">Всички</option>
+          <option value="all">Всички</option>
           {categories.map((c: string) => (
             <option key={c}>{c}</option>
           ))}

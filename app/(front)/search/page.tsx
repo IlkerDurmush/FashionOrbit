@@ -6,15 +6,15 @@ import Link from "next/link";
 const sortOrders = ["Най-нови", "Най-евтини", "Най-скъпи", "Най-оценени"];
 const prices = [
   {
-    name: "1лв. до 50лв.",
+    name: "лв.1 to лв.50",
     value: "1-50",
   },
   {
-    name: "51лв. до 200лв.",
+    name: "лв.51 to лв.200",
     value: "51-200",
   },
   {
-    name: "201лв. до 1000лв.",
+    name: "лв.201 to лв.1000",
     value: "201-1000",
   },
 ];
@@ -22,12 +22,7 @@ const prices = [
 const ratings = [5, 4, 3, 2, 1];
 
 export async function generateMetadata({
-  searchParams: {
-    q = "Всяква",
-    category = "Всяква",
-    price = "Всяква",
-    rating = "Всяква",
-  },
+  searchParams: { q = "all", category = "all", price = "all", rating = "all" },
 }: {
   searchParams: {
     q: string;
@@ -39,16 +34,16 @@ export async function generateMetadata({
   };
 }) {
   if (
-    (q !== "Всяква" && q !== "") ||
-    category !== "Всяква" ||
-    rating !== "Всяква" ||
-    price !== "Всяква"
+    (q !== "all" && q !== "") ||
+    category !== "all" ||
+    rating !== "all" ||
+    price !== "all"
   ) {
     return {
-      title: `Search ${q !== "Всяква" ? q : ""}
-          ${category !== "Всяква" ? ` : Category ${category}` : ""}
-          ${price !== "Всяква" ? ` : Price ${price}` : ""}
-          ${rating !== "Всяква" ? ` : Rating ${rating}` : ""}`,
+      title: `Search ${q !== "all" ? q : ""}
+          ${category !== "all" ? ` : Category ${category}` : ""}
+          ${price !== "all" ? ` : Price ${price}` : ""}
+          ${rating !== "all" ? ` : Rating ${rating}` : ""}`,
     };
   } else {
     return {
@@ -59,10 +54,10 @@ export async function generateMetadata({
 
 export default async function SearchPage({
   searchParams: {
-    q = "Всяква",
-    category = "Всяква",
-    price = "Всяква",
-    rating = "Всяква",
+    q = "all",
+    category = "all",
+    price = "all",
+    rating = "all",
     sort = "newest",
     page = "1",
   },
@@ -115,11 +110,11 @@ export default async function SearchPage({
             <li>
               <Link
                 className={`link link-hover ${
-                  "Всяква" === category && "link-primary"
+                  "all" === category && "link-primary"
                 }`}
-                href={getFilterUrl({ c: "Всяква" })}
+                href={getFilterUrl({ c: "all" })}
               >
-                Всяква
+                Всички
               </Link>
             </li>
             {categories.map((c: string) => (
@@ -142,11 +137,11 @@ export default async function SearchPage({
             <li>
               <Link
                 className={`link link-hover ${
-                  "Всяква" === price && "link-primary"
+                  "all" === price && "link-primary"
                 }`}
-                href={getFilterUrl({ p: "Всяква" })}
+                href={getFilterUrl({ p: "all" })}
               >
-                Всяква
+                Всички
               </Link>
             </li>
             {prices.map((p) => (
@@ -164,16 +159,16 @@ export default async function SearchPage({
           </ul>
         </div>
         <div>
-          <div className="text-xl pt-3">Мнение клиенти</div>
+          <div className="text-xl pt-3">Оценка</div>
           <ul>
             <li>
               <Link
-                href={getFilterUrl({ r: "Всяква" })}
+                href={getFilterUrl({ r: "all" })}
                 className={`link link-hover ${
-                  "Всяква" === rating && "link-primary"
+                  "all" === rating && "link-primary"
                 }`}
               >
-                Всяква
+                Всички
               </Link>
             </li>
             {ratings.map((r) => (
@@ -194,18 +189,18 @@ export default async function SearchPage({
       <div className="md:col-span-4">
         <div className="flex items-center justify-between  py-4">
           <div className="flex items-center">
-            {products.length === 0 ? "Няма" : countProducts} Резултати
-            {q !== "Всяква" && q !== "" && " : " + q}
-            {category !== "Всяква" && " : " + category}
-            {price !== "Всяква" && " : Цена " + price}
-            {rating !== "Всяква" && " : Мнения " + rating + " & нагоре"}
+            {products.length === 0 ? "No" : countProducts} Резултата
+            {q !== "all" && q !== "" && " : " + q}
+            {category !== "all" && " : " + category}
+            {price !== "all" && " : Price " + price}
+            {rating !== "all" && " : Rating " + rating + " & up"}
             &nbsp;
-            {(q !== "Всяква" && q !== "") ||
-            category !== "Всяква" ||
-            rating !== "Всяква" ||
-            price !== "Всяква" ? (
+            {(q !== "all" && q !== "") ||
+            category !== "all" ||
+            rating !== "all" ||
+            price !== "all" ? (
               <Link className="btn btn-sm btn-ghost" href="/search">
-                Изчистване
+                Изчисти
               </Link>
             ) : null}
           </div>
