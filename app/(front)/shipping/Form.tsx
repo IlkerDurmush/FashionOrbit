@@ -75,11 +75,11 @@ const Form = () => {
         <div className="card-body">
           <h1 className="card-title">Delivery address</h1>
           <form onSubmit={handleSubmit(formSubmit)}>
-            <FormInput name="Три имена" id="fullName" required />
-            <FormInput name="Адрес" id="address" required />
-            <FormInput name="Град" id="city" required />
-            <FormInput name="Пощенски код" id="postalCode" required />
-            <FormInput name="Държава" id="country" required />
+            <FormInput name="Name" id="fullName" required />
+            <FormInput name="Address" id="address" required />
+            <FormInput name="City" id="city" required />
+            <FormInput name="Postal Code" id="postalCode" required />
+            <FormInput name="Country" id="country" required />
             <div className="my-2">
               <button
                 type="submit"
