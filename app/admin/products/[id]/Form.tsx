@@ -122,15 +122,15 @@ export default function ProductEditForm({ productId }: { productId: string }) {
 
   return (
     <div>
-      <h1 className="text-2xl py-4">Обновяване на {formatId(productId)}</h1>
+      <h1 className="text-2xl py-4">Updated at {formatId(productId)}</h1>
       <div>
         <form onSubmit={handleSubmit(formSubmit)}>
-          <FormInput name="Име" id="name" required />
-          <FormInput name="Слъг" id="slug" required />
-          <FormInput name="Снимка" id="image" required />
+          <FormInput name="Name" id="name" required />
+          <FormInput name="Slug" id="slug" required />
+          <FormInput name="Image" id="image" required />
           <div className="md:flex mb-6">
             <label className="label md:w-1/5" htmlFor="imageFile">
-              Качване на снимка
+              Upload image
             </label>
             <div className="md:w-4/5">
               <input
@@ -141,11 +141,11 @@ export default function ProductEditForm({ productId }: { productId: string }) {
               />
             </div>
           </div>
-          <FormInput name="Цена" id="price" required />
-          <FormInput name="Категория" id="category" required />
-          <FormInput name="Марка" id="brand" required />
-          <FormInput name="Описание" id="description" required />
-          <FormInput name="Наличност" id="countInStock" required />
+          <FormInput name="Price" id="price" required />
+          <FormInput name="Category" id="category" required />
+          <FormInput name="Brand" id="brand" required />
+          <FormInput name="Descrption" id="description" required />
+          <FormInput name="CountInStock" id="countInStock" required />
 
           <button
             type="submit"
@@ -153,10 +153,10 @@ export default function ProductEditForm({ productId }: { productId: string }) {
             className="btn btn-primary"
           >
             {isUpdating && <span className="loading loading-spinner"></span>}
-            Обновяване
+            Update
           </button>
           <Link className="btn ml-4 " href="/admin/products">
-            Отказ
+            Cancel
           </Link>
         </form>
       </div>

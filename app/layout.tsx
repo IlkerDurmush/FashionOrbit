@@ -49,9 +49,9 @@ export default function RootLayout({
                     </p>
                   </aside>
                   <nav>
-                    <h6 className="footer-title">Информация</h6>
-                    <Link href={`./terms-of-service`}>Общи Условия</Link>
-                    <a className="link link-hover">Контакти</a>
+                    <h6 className="footer-title">Information</h6>
+                    <Link href={`./terms-of-service`}>Terms of service</Link>
+                    <a className="link link-hover">Contacts</a>
                   </nav>
                 </footer>
               </div>

@@ -72,11 +72,11 @@ const Form = () => {
   return (
     <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">Създаване на профил</h1>
+        <h1 className="card-title">Register</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="name">
-              Име
+              Name
             </label>
             <input
               type="text"
@@ -92,7 +92,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="email">
-              Имейл
+              Email
             </label>
             <input
               type="text"
@@ -112,7 +112,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="password">
-              Парола
+              Password
             </label>
             <input
               type="password"
@@ -128,7 +128,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="confirmPassword">
-              Потвърждаване на парола
+              Confirm password
             </label>
             <input
               type="password"
@@ -155,16 +155,16 @@ const Form = () => {
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>
               )}
-              Създаване
+              Create
             </button>
           </div>
         </form>
 
         <div className="divider"> </div>
         <div>
-          Вече имате профил?{" "}
+          Already have an account?{" "}
           <Link className="link" href={`/signin?callbackUrl=${callbackUrl}`}>
-            Влизане в профил
+            Log in
           </Link>
         </div>
       </div>

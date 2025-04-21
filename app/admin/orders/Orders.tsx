@@ -28,22 +28,22 @@ export default function Orders() {
             {orders.map((order: Order) => (
               <tr key={order._id}>
                 <td>..{order._id.substring(20, 24)}</td>
-                <td>{order.user?.name || "Потребител"}</td>
+                <td>{order.user?.name || "User"}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice}лв.</td>
                 <td>
                   {order.isPaid && order.paidAt
                     ? `${order.paidAt.substring(0, 10)}`
-                    : "Неплатено"}
+                    : "Unpaid"}
                 </td>
                 <td>
                   {order.isDelivered && order.deliveredAt
                     ? `${order.deliveredAt.substring(0, 10)}`
-                    : "Недоставен"}
+                    : "Not Delivered"}
                 </td>
                 <td>
                   <Link href={`/order/${order._id}`} passHref>
-                    Детайли
+                    Details
                   </Link>
                 </td>
               </tr>

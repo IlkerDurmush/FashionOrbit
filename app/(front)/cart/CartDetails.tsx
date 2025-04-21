@@ -19,10 +19,10 @@ export default function CartDetails() {
 
   return (
     <>
-      <h1 className="py-4 text-2xl">Количка</h1>
+      <h1 className="py-4 text-2xl">Cart</h1>
       {items.length === 0 ? (
         <div>
-          Количката е празна. <Link href="/">Към продукти</Link>
+          The cart is empty <Link href="/">Go to proudcts</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -30,9 +30,9 @@ export default function CartDetails() {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Продукт</th>
-                  <th>Количество</th>
-                  <th>Цена</th>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,7 +69,7 @@ export default function CartDetails() {
                         +
                       </button>
                     </td>
-                    <td>{item.price}лв.</td>
+                    <td>{item.price}$</td>
                   </tr>
                 ))}
               </tbody>
@@ -80,8 +80,8 @@ export default function CartDetails() {
               <ul>
                 <li>
                   <div className="pb-3 text-xl">
-                    Общо ({items.reduce((a, c) => a + c.qty, 0)}) :{itemsPrice}
-                    лв.
+                    Total ({items.reduce((a, c) => a + c.qty, 0)}) :{itemsPrice}
+                    $
                   </div>
                 </li>
                 <li>
@@ -89,7 +89,7 @@ export default function CartDetails() {
                     onClick={() => router.push("/shipping")}
                     className="btn btn-primary w-full"
                   >
-                    Плащане
+                    Pay
                   </button>
                 </li>
               </ul>

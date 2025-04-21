@@ -30,68 +30,80 @@ export default async function ProductDetails({
   const product = await productService.getBySlug(params.slug);
   if (!product) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <Image src={Mike} alt="Mike" className="size-36" />
-        <p> Whoops that item doesnt exist</p>
+      <div className="flex flex-col justify-center items-center h-screen text-center space-y-4">
+        <Image src={Mike} alt="Mike" className="w-36 h-36" />
+        <p className="text-xl font-semibold text-red-500">
+          Whoops, that item doesn't exist!
+        </p>
+        <Link href="/" className="btn btn-outline btn-accent rounded-xl px-6">
+          Back to Products
+        </Link>
       </div>
     );
   }
+
   return (
     <>
-      <div className="my-2 btn w-fit p-1 rounded">
-        <Link href="/">Обратно към продукти</Link>
+      <div className="mb-6 py-2">
+        <Link
+          href="/"
+          className="btn btn-outline btn-secondary rounded-xl px-4 py-2"
+        >
+          ← Back to Products
+        </Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-3">
+
+      <div className="grid md:grid-cols-4 gap-8">
+        {/* Image */}
         <div className="md:col-span-2">
           <Image
             src={product.image}
             alt={product.name}
             width={640}
             height={640}
-            sizes="100vw"
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-          ></Image>
+            className="rounded-2xl shadow-md w-full object-cover"
+          />
         </div>
 
-        <div>
-          <ul className="space-y-4">
-            <li>
-              <h1 className="text-xl">{product.name}</h1>
-            </li>
-            <li>
-              <Rating
-                value={product.rating}
-                caption={`${product.numReviews} ratings`}
-              />
-            </li>
-            <li>{product.brand}</li>
-            <li>
-              <div className="divider"></div>
-            </li>
-            <li>
-              Описание: <p>{product.description}</p>
-            </li>
-          </ul>
+        {/* Product Info */}
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <Rating
+            value={product.rating}
+            caption={`${product.numReviews} reviews`}
+          />
+          <p className="text-gray-500 text-lg font-medium">
+            Brand: {product.brand}
+          </p>
+          <div className="divider" />
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Description:</h3>
+            <p className="text-gray-600 leading-relaxed">
+              {product.description}
+            </p>
+          </div>
         </div>
 
+        {/* Purchase Card */}
         <div>
-          <div className="card bg-base-300 shadow-xl mt-3 md:mt-0">
-            <div className="card-body">
-              <div className="mb-2 flex justify-between">
-                <div>Цена</div>
-                <div>{product.price}лв.</div>
+          <div className="card bg-base-200 shadow-xl rounded-2xl">
+            <div className="card-body space-y-4">
+              <div className="flex justify-between text-lg font-semibold">
+                <span>Price:</span>
+                <span>${product.price}</span>
               </div>
-              <div className="mb-2 flex justify-between">
-                <div>Статус</div>
-                <div>
+              <div className="flex justify-between text-lg font-semibold">
+                <span>Status:</span>
+                <span
+                  className={
+                    product.countInStock > 0 ? "text-green-600" : "text-red-500"
+                  }
+                >
                   {product.countInStock > 0 ? "In Stock" : "Unavailable"}
-                </div>
+                </span>
               </div>
-              {product.countInStock !== 0 && (
-                <div className="card-actions justify-center">
+              {product.countInStock > 0 && (
+                <div className="pt-4">
                   <AddToCart
                     item={{
                       ...convertDocToObj(product),

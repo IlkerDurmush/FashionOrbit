@@ -56,14 +56,14 @@ export default function Products() {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h1 className="py-4 text-2xl">Продукти</h1>
+        <h1 className="py-4 text-2xl">Products</h1>
         <button
           disabled={isCreating}
           onClick={() => createProduct()}
           className="btn btn-primary btn-sm"
         >
           {isCreating && <span className="loading loading-spinner"></span>}
-          Създай
+          Create
         </button>
       </div>
 
@@ -72,12 +72,12 @@ export default function Products() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>ИМЕ</th>
-              <th>ЦЕНА</th>
-              <th>КАТЕГОРИЯ</th>
-              <th>НАЛИЧНОСТ</th>
-              <th>МНЕНИЕ</th>
-              <th>ДЕЙСТВИЕ</th>
+              <th>NAME</th>
+              <th>PRICE</th>
+              <th>CATEGORY</th>
+              <th>IN STOCK</th>
+              <th>RATING</th>
+              <th>ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -85,7 +85,7 @@ export default function Products() {
               <tr key={product._id}>
                 <td>{formatId(product._id!)}</td>
                 <td>{product.name}</td>
-                <td>{product.price}лв.</td>
+                <td>{product.price}$</td>
                 <td>{product.category}</td>
                 <td>{product.countInStock}</td>
                 <td>{product.rating}</td>
@@ -95,7 +95,7 @@ export default function Products() {
                     type="button"
                     className="btn btn-ghost btn-sm"
                   >
-                    Промяна
+                    Change
                   </Link>
                   &nbsp;
                   <button
@@ -103,7 +103,7 @@ export default function Products() {
                     type="button"
                     className="btn btn-ghost btn-sm"
                   >
-                    Изтрий
+                    Delete
                   </button>
                 </td>
               </tr>

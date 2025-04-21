@@ -27,11 +27,11 @@ export default function MyOrder() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>ДАТА</th>
-            <th>ОБЩО</th>
-            <th>ПЛАТЕНО</th>
-            <th>ДОСТАВЕНО</th>
-            <th>ОБРАБОТКА</th>
+            <th>DATE</th>
+            <th>TOTAL</th>
+            <th>PAID</th>
+            <th>DELIVERED</th>
+            <th>EDIT</th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@ export default function MyOrder() {
               </td>
               <td>
                 <Link href={`/order/${order._id}`} passHref>
-                  Детайли
+                  Details
                 </Link>
               </td>
             </tr>

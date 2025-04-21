@@ -2,10 +2,10 @@ const CheckoutSteps = ({ current = 0 }) => {
   return (
     <ul className="steps steps-vertical lg:steps-horizontal w-full mt-4">
       {[
-        "Влизане в профил",
-        "Адрес за доставка",
-        "Метод на плащане",
-        "Потвърждаване на Поръчка",
+        "Log in profile",
+        "Delivery address",
+        "Payment method",
+        "Confirm order",
       ].map((step, index) => (
         <li
           key={step}

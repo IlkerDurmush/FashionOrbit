@@ -52,7 +52,7 @@ const Dashboard = () => {
     datasets: [
       {
         fill: true,
-        label: "Продажби",
+        label: "Sales",
         data: summary.salesData.map(
           (x: { totalSales: number }) => x.totalSales
         ),
@@ -66,7 +66,7 @@ const Dashboard = () => {
     datasets: [
       {
         fill: true,
-        label: "Поръчки",
+        label: "Orders",
         data: summary.salesData.map(
           (x: { totalOrders: number }) => x.totalOrders
         ),
@@ -79,7 +79,7 @@ const Dashboard = () => {
     labels: summary.productsData.map((x: { _id: string }) => x._id), // 2022/01 2022/03
     datasets: [
       {
-        label: "Категория",
+        label: "Category",
         data: summary.productsData.map(
           (x: { totalProducts: number }) => x.totalProducts
         ),
@@ -106,7 +106,7 @@ const Dashboard = () => {
     labels: summary.usersData.map((x: { _id: string }) => x._id), // 2022/01 2022/03
     datasets: [
       {
-        label: "Потребители",
+        label: "Users",
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
         data: summary.usersData.map(
@@ -120,33 +120,33 @@ const Dashboard = () => {
     <div>
       <div className="my-4 stats inline-grid md:flex  shadow stats-vertical   md:stats-horizontal">
         <div className="stat">
-          <div className="stat-title">Продажби</div>
+          <div className="stat-title">Orders</div>
           <div className="stat-value text-primary">
-            {formatNumber(summary.ordersPrice)}лв.
+            {formatNumber(summary.ordersPrice)}$
           </div>
           <div className="stat-desc">
-            <Link href="/admin/orders">Виж Продажби</Link>
+            <Link href="/admin/orders">View Orders</Link>
           </div>
         </div>
         <div className="stat">
-          <div className="stat-title"> Поръчки</div>
+          <div className="stat-title"> Orders</div>
           <div className="stat-value text-primary">{summary.ordersCount}</div>
           <div className="stat-desc">
-            <Link href="/admin/orders">Виж Поръчки</Link>
+            <Link href="/admin/orders">View Orders</Link>
           </div>
         </div>
         <div className="stat">
-          <div className="stat-title">Продукти</div>
+          <div className="stat-title">Products</div>
           <div className="stat-value text-primary">{summary.productsCount}</div>
           <div className="stat-desc">
-            <Link href="/admin/products">Виж Продукти</Link>
+            <Link href="/admin/products">View products</Link>
           </div>
         </div>
         <div className="stat">
-          <div className="stat-title">Потребители</div>
+          <div className="stat-title">Users</div>
           <div className="stat-value text-primary">{summary.usersCount}</div>
           <div className="stat-desc">
-            <Link href="/admin/users">Виж Потребители</Link>
+            <Link href="/admin/users">View users</Link>
           </div>
         </div>
       </div>

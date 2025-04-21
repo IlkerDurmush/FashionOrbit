@@ -14,8 +14,8 @@ const AdminLayout = async ({
     return (
       <div className="relative flex flex-grow p-4">
         <div>
-          <h1 className="text-2xl">Неавторизиран</h1>
-          <p>Нужни за админски права</p>
+          <h1 className="text-2xl">Unauthorized</h1>
+          <p>You need admin access</p>
         </div>
       </div>
     );
@@ -31,7 +31,7 @@ const AdminLayout = async ({
                 className={"dashboard" === activeItem ? "active" : ""}
                 href="/admin/dashboard"
               >
-                Табло
+                Dash
               </Link>
             </li>
             <li>
@@ -39,7 +39,7 @@ const AdminLayout = async ({
                 className={"orders" === activeItem ? "active" : ""}
                 href="/admin/orders"
               >
-                Поръчки
+                Orders
               </Link>
             </li>
             <li>
@@ -47,7 +47,7 @@ const AdminLayout = async ({
                 className={"products" === activeItem ? "active" : ""}
                 href="/admin/products"
               >
-                Продукти
+                Products
               </Link>
             </li>
             <li>
@@ -55,7 +55,7 @@ const AdminLayout = async ({
                 className={"users" === activeItem ? "active" : ""}
                 href="/admin/users"
               >
-                Потребители
+                Users
               </Link>
             </li>
           </ul>

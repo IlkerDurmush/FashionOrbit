@@ -80,46 +80,46 @@ export default function OrderDetails({
 
   return (
     <div>
-      <h1 className="text-2xl py-4">Поръчка {orderId}</h1>
+      <h1 className="text-2xl py-4">Order {orderId}</h1>
       <div className="grid md:grid-cols-4 md:gap-5 my-4">
         <div className="md:col-span-3">
           <div className="card bg-base-300">
             <div className="card-body">
-              <h2 className="card-title">Адрес</h2>
+              <h2 className="card-title">Adress</h2>
               <p>{shippingAddress.fullName}</p>
               <p>
                 {shippingAddress.address}, {shippingAddress.city},{" "}
                 {shippingAddress.postalCode}, {shippingAddress.country}{" "}
               </p>
               {isDelivered ? (
-                <div className="text-success">Доставено на {deliveredAt}</div>
+                <div className="text-success">Delivered to {deliveredAt}</div>
               ) : (
-                <div className="text-error">Недоставено</div>
+                <div className="text-error">Undelivered</div>
               )}
             </div>
           </div>
 
           <div className="card bg-base-300 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Метод за плащане</h2>
+              <h2 className="card-title">Payment Method</h2>
               <p>{paymentMethod}</p>
               {isPaid ? (
-                <div className="text-success">Платено {paidAt}</div>
+                <div className="text-success">Paid {paidAt}</div>
               ) : (
-                <div className="text-error">Неплатено</div>
+                <div className="text-error">Unpaid</div>
               )}
             </div>
           </div>
 
           <div className="card bg-base-300 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Продукти</h2>
+              <h2 className="card-title">Products</h2>
               <table className="table">
                 <thead>
                   <tr>
-                    <th>Продукт</th>
-                    <th>Количество</th>
-                    <th>Цена</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -154,29 +154,29 @@ export default function OrderDetails({
         <div>
           <div className="card bg-base-300">
             <div className="card-body">
-              <h2 className="card-title">Общо</h2>
+              <h2 className="card-title">Total</h2>
               <ul>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Продукти</div>
+                    <div>Products</div>
                     <div>${itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Такса</div>
+                    <div>Tax</div>
                     <div>${taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Доставка</div>
+                    <div>Delivery</div>
                     <div>${shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Общо</div>
+                    <div>Total</div>
                     <div>${totalPrice}</div>
                   </div>
                 </li>
@@ -203,7 +203,7 @@ export default function OrderDetails({
                       {isDelivering && (
                         <span className="loading loading-spinner"></span>
                       )}
-                      Обработи като доставено
+                      Mark as delivered
                     </button>
                   </li>
                 )}

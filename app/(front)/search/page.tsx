@@ -3,18 +3,18 @@ import { Rating } from "@/components/products/Rating";
 import productServices from "@/lib/services/productService";
 import Link from "next/link";
 
-const sortOrders = ["Най-нови", "Най-евтини", "Най-скъпи", "Най-оценени"];
+const sortOrders = ["Newest", "Cheapest", "Most expensive", "Highest Rated"];
 const prices = [
   {
-    name: "лв.1 to лв.50",
+    name: "$1 to $50",
     value: "1-50",
   },
   {
-    name: "лв.51 to лв.200",
+    name: "$51 to $200",
     value: "51-200",
   },
   {
-    name: "лв.201 to лв.1000",
+    name: "$201 to $1000",
     value: "201-1000",
   },
 ];
@@ -102,26 +102,28 @@ export default async function SearchPage({
     sort,
   });
   return (
-    <div className="grid md:grid-cols-5 md:gap-5">
-      <div>
-        <div className="text-xl pt-3">Категория</div>
-        <div>
-          <ul>
+    <div className="grid md:grid-cols-5 gap-6 p-4">
+      {/* Sidebar Filters */}
+      <aside className="space-y-6">
+        {/* Category */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2">Category</h2>
+          <ul className="space-y-1">
             <li>
               <Link
-                className={`link link-hover ${
-                  "all" === category && "link-primary"
+                className={`block px-3 py-1 rounded transition hover:bg-primary/10 ${
+                  category === "all" ? "text-primary font-semibold" : ""
                 }`}
                 href={getFilterUrl({ c: "all" })}
               >
-                Всички
+                All
               </Link>
             </li>
-            {categories.map((c: string) => (
+            {categories.map((c) => (
               <li key={c}>
                 <Link
-                  className={`link link-hover ${
-                    c === category && "link-primary"
+                  className={`block px-3 py-1 rounded transition hover:bg-primary/10 ${
+                    category === c ? "text-primary font-semibold" : ""
                   }`}
                   href={getFilterUrl({ c })}
                 >
@@ -130,88 +132,96 @@ export default async function SearchPage({
               </li>
             ))}
           </ul>
-        </div>
-        <div>
-          <div className="text-xl pt-3">Цена</div>
-          <ul>
+        </section>
+
+        {/* Price */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2">Price</h2>
+          <ul className="space-y-1">
             <li>
               <Link
-                className={`link link-hover ${
-                  "all" === price && "link-primary"
+                className={`block px-3 py-1 rounded transition hover:bg-primary/10 ${
+                  price === "all" ? "text-primary font-semibold" : ""
                 }`}
                 href={getFilterUrl({ p: "all" })}
               >
-                Всички
+                All
               </Link>
             </li>
             {prices.map((p) => (
               <li key={p.value}>
                 <Link
-                  href={getFilterUrl({ p: p.value })}
-                  className={`link link-hover ${
-                    p.value === price && "link-primary"
+                  className={`block px-3 py-1 rounded transition hover:bg-primary/10 ${
+                    price === p.value ? "text-primary font-semibold" : ""
                   }`}
+                  href={getFilterUrl({ p: p.value })}
                 >
                   {p.name}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-        <div>
-          <div className="text-xl pt-3">Оценка</div>
-          <ul>
+        </section>
+
+        {/* Rating */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2">Rating</h2>
+          <ul className="space-y-1">
             <li>
               <Link
-                href={getFilterUrl({ r: "all" })}
-                className={`link link-hover ${
-                  "all" === rating && "link-primary"
+                className={`block px-3 py-1 rounded transition hover:bg-primary/10 ${
+                  rating === "all" ? "text-primary font-semibold" : ""
                 }`}
+                href={getFilterUrl({ r: "all" })}
               >
-                Всички
+                All
               </Link>
             </li>
             {ratings.map((r) => (
               <li key={r}>
                 <Link
-                  href={getFilterUrl({ r: `${r}` })}
-                  className={`link link-hover ${
-                    `${r}` === rating && "link-primary"
+                  className={`flex items-center gap-1 px-3 py-1 rounded transition hover:bg-primary/10 ${
+                    rating === `${r}` ? "text-primary font-semibold" : ""
                   }`}
+                  href={getFilterUrl({ r: `${r}` })}
                 >
-                  <Rating caption={" & нагоре"} value={r}></Rating>
+                  <Rating caption="& up" value={r} />
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-      <div className="md:col-span-4">
-        <div className="flex items-center justify-between  py-4">
-          <div className="flex items-center">
-            {products.length === 0 ? "No" : countProducts} Резултата
-            {q !== "all" && q !== "" && " : " + q}
-            {category !== "all" && " : " + category}
-            {price !== "all" && " : Price " + price}
-            {rating !== "all" && " : Rating " + rating + " & up"}
-            &nbsp;
+        </section>
+      </aside>
+
+      {/* Products List */}
+      <section className="md:col-span-4 space-y-6">
+        {/* Top bar */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div className="text-sm text-gray-700 dark:text-gray-300">
+            <strong>{products.length === 0 ? "No" : countProducts}</strong>{" "}
+            Results
+            {q !== "all" && q !== "" && ` : ${q}`}
+            {category !== "all" && ` : ${category}`}
+            {price !== "all" && ` : Price ${price}`}
+            {rating !== "all" && ` : Rating ${rating} & up`}
             {(q !== "all" && q !== "") ||
             category !== "all" ||
             rating !== "all" ||
             price !== "all" ? (
-              <Link className="btn btn-sm btn-ghost" href="/search">
-                Изчисти
+              <Link className="ml-3 btn btn-sm btn-ghost" href="/search">
+                Clear
               </Link>
             ) : null}
           </div>
-          <div>
-            Сортирай по{" "}
+
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-gray-600 dark:text-gray-300">Sort by:</span>
             {sortOrders.map((s) => (
               <Link
                 key={s}
-                className={`mx-2 link link-hover ${
-                  sort == s ? "link-primary" : ""
-                } `}
+                className={`btn btn-xs ${
+                  sort === s ? "btn-primary" : "btn-ghost"
+                } transition`}
                 href={getFilterUrl({ s })}
               >
                 {s}
@@ -220,28 +230,32 @@ export default async function SearchPage({
           </div>
         </div>
 
-        <div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3  ">
-            {products.map((product) => (
-              <ProductItem key={product.slug} product={product} />
-            ))}
-          </div>
-          <div className="join">
-            {products.length > 0 &&
-              Array.from(Array(pages).keys()).map((p) => (
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <ProductItem key={product.slug} product={product} />
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {products.length > 0 && (
+          <div className="flex justify-center mt-6">
+            <div className="join">
+              {Array.from(Array(pages).keys()).map((p) => (
                 <Link
                   key={p}
                   className={`join-item btn ${
-                    Number(page) === p + 1 ? "btn-active" : ""
-                  } `}
+                    Number(page) === p + 1 ? "btn-primary" : "btn-outline"
+                  }`}
                   href={getFilterUrl({ pg: `${p + 1}` })}
                 >
                   {p + 1}
                 </Link>
               ))}
+            </div>
           </div>
-        </div>
-      </div>
+        )}
+      </section>
     </div>
   );
 }

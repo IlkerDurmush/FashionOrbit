@@ -73,7 +73,7 @@ const Form = () => {
       <CheckoutSteps current={1} />
       <div className="max-w-sm mx-auto card bg-base-300 my-4">
         <div className="card-body">
-          <h1 className="card-title">Адрес за доставка</h1>
+          <h1 className="card-title">Delivery address</h1>
           <form onSubmit={handleSubmit(formSubmit)}>
             <FormInput name="Три имена" id="fullName" required />
             <FormInput name="Адрес" id="address" required />
@@ -89,7 +89,7 @@ const Form = () => {
                 {isSubmitting && (
                   <span className="loading-spinner loading"></span>
                 )}
-                Напред
+                Next
               </button>
             </div>
             <div className="my-2">
@@ -100,7 +100,7 @@ const Form = () => {
                   router.push("/cart");
                 }}
               >
-                Назад
+                Back
               </button>
             </div>
           </form>

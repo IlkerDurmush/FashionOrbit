@@ -64,7 +64,7 @@ const Menu = () => {
           </li>
           <li>
             <Link className="btn btn-ghost rounded-btn" href="/cart">
-              Количка
+              Cart
               {mounted && items.length != 0 && (
                 <div className="badge badge-secondary">
                   {items.reduce((a, c) => a + c.qty, 0)}{" "}
@@ -100,18 +100,18 @@ const Menu = () => {
                   >
                     {session.user.isAdmin && (
                       <li onClick={handleClick}>
-                        <Link href="/admin/dashboard">Админ</Link>
+                        <Link href="/admin/dashboard">Admin</Link>
                       </li>
                     )}
                     <li onClick={handleClick}>
-                      <Link href="/profile">Моя Профил</Link>
+                      <Link href="/profile">My profile</Link>
                     </li>
                     <li onClick={handleClick}>
-                      <Link href="/order-history">Поръчки История</Link>
+                      <Link href="/order-history">Order history</Link>
                     </li>
                     <li onClick={handleClick}>
                       <button onClick={signoutHandler} type="button">
-                        Излизане от профил
+                        Log out
                       </button>
                     </li>
                   </ul>

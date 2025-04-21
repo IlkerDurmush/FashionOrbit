@@ -44,7 +44,7 @@ const Form = () => {
   return (
     <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">Влизане в профил</h1>
+        <h1 className="card-title">Sign in</h1>
         {params.get("error") && (
           <div className="alert text-error">
             {params.get("error") === "CredentialsSignin"
@@ -58,7 +58,7 @@ const Form = () => {
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="email">
-              Имейл
+              Email
             </label>
             <input
               type="text"
@@ -78,7 +78,7 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="password">
-              Парола
+              Password
             </label>
             <input
               type="password"
@@ -101,14 +101,14 @@ const Form = () => {
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>
               )}
-              Влизане
+              Sign in
             </button>
           </div>
         </form>
         <div>
-          Нямате профил?{" "}
+          Don't have an account?{" "}
           <Link className="link" href={`/register?callbackUrl=${callbackUrl}`}>
-            Създаване на профил
+            Register
           </Link>
         </div>
       </div>

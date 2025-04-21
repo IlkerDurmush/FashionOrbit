@@ -15,23 +15,13 @@ export const SearchBox = () => {
   return (
     <form action="/search" method="GET">
       <div className="join">
-        <select
-          name="category"
-          defaultValue={category}
-          className="join-item select select-bordered "
-        >
-          <option value="all">Всички</option>
-          {categories.map((c: string) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
         <input
-          className="join-item input input-bordered  w-48"
-          placeholder="Какво търсите?"
+          className="join-item input input-bordered  w-68"
+          placeholder="Looking for?"
           defaultValue={q}
           name="q"
         />
-        <button className="join-item btn">Потърси</button>
+        <button className="join-item btn">Search</button>
       </div>
     </form>
   );
