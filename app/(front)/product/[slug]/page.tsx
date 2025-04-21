@@ -33,7 +33,7 @@ export default async function ProductDetails({
       <div className="flex flex-col justify-center items-center h-screen text-center space-y-4">
         <Image src={Mike} alt="Mike" className="w-36 h-36" />
         <p className="text-xl font-semibold text-red-500">
-          Whoops, that item doesn't exist!
+          Whoops, that item doesn&apos;t exist!
         </p>
         <Link href="/" className="btn btn-outline btn-accent rounded-xl px-6">
           Back to Products
