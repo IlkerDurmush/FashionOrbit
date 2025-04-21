@@ -106,7 +106,7 @@ const Form = () => {
           </div>
         </form>
         <div>
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link className="link" href={`/register?callbackUrl=${callbackUrl}`}>
             Register
           </Link>
