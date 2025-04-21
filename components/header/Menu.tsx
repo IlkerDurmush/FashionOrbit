@@ -127,7 +127,7 @@ const Menu = () => {
                   signIn();
                 }}
               >
-                Влизане в профил
+                Sign In
               </button>
             </li>
           )}
